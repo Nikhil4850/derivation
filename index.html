@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Derivative Solver</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="h">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Quiz.html">Quiz</a></li>
+                <li><a href="formula.html">Formulas</a></li>
+                <li><a href="">FAQs</a></li>
+                <li><a href="http://localhost/login/">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h2>Derivative Solver</h2>
+        <label for='function'>Enter Function (e.g., 3x^2 + 2x + 5):</label>
+        <input type='text' id='function' placeholder='Enter function'><br>
+        <button onclick="redirectToSolvePage()">Calculate</button>
+    </div>
+    
+    <script>
+        function redirectToSolvePage() {
+            let inputFunction = document.getElementById("function").value;
+            if (!inputFunction.trim()) {
+                alert("Please enter a function.");
+                return;
+            }
+            
+            let queryParams = new URLSearchParams();
+            queryParams.append("function", inputFunction);
+            
+            window.location.href = `dsolve.html?${queryParams.toString()}`;
+        }
+    </script>
+</body>
+</html>
+
+
+
+<style>
+    /* Import Poppins Font */
+ @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+ 
+ /* Global Styles */
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     font-family: 'Poppins', sans-serif;
+ }
+ 
+ /* Body Styling - Gradient Background */
+ body {
+     background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e);
+     background-size: 400% 400%;
+     animation: gradientBG 10s ease infinite;
+     color: #fff;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     height: 100vh;
+     padding: 20px;
+     text-align: center;
+ }
+ 
+ /* Background Gradient Animation */
+ @keyframes gradientBG {
+     0% { background-position: 0% 50%; }
+     50% { background-position: 100% 50%; }
+     100% { background-position: 0% 50%; }
+ }
+ 
+ /* Navigation Bar */
+ nav {
+     width: 100%;
+     background: rgba(0, 0, 0, 0.3);
+     padding: 10px 0;
+     position: fixed;
+     top: 0;
+     left: 0;
+     text-align: center;
+ }
+ 
+ nav ul {
+     list-style: none;
+     display: flex;
+     justify-content: center;
+     gap: 20px;
+     padding: 0;
+ }
+ 
+ nav ul li {
+     display: inline;
+ }
+ 
+ nav ul li a {
+     text-decoration: none;
+     color: #fff;
+     font-size: 18px;
+     transition: 0.3s;
+ }
+ 
+ nav ul li a:hover {
+     color: #ffd700;
+ }
+ 
+ /* Glassmorphism Container */
+ .container {
+     background: rgba(255, 255, 255, 0.1);
+     border-radius: 20px;
+     padding: 30px;
+     width: 90%;
+     max-width: 500px;
+     backdrop-filter: blur(15px);
+     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+     border: 2px solid rgba(255, 255, 255, 0.2);
+     text-align: center;
+     animation: fadeIn 1.2s ease-in-out;
+     margin-top: 80px; /* Avoid overlapping with navbar */
+ }
+ 
+ /* Fade In Animation */
+ @keyframes fadeIn {
+     from { opacity: 0; transform: scale(0.8); }
+     to { opacity: 1; transform: scale(1); }
+ }
+ 
+ /* Heading Styling */
+ h2 {
+     font-size: 30px;
+     font-weight: 600;
+     text-transform: uppercase;
+     background: linear-gradient(45deg, #ffd700, #ff9900);
+     -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
+     letter-spacing: 2px;
+     text-shadow: 2px 2px 10px rgba(255, 215, 0, 0.5);
+ }
+ 
+ /* Input Field Styling */
+ input {
+     width: 100%;
+     padding: 12px;
+     margin: 12px 0;
+     font-size: 16px;
+     background: rgba(255, 255, 255, 0.15);
+     border: 2px solid rgba(255, 255, 255, 0.3);
+     border-radius: 10px;
+     color: #fff;
+     outline: none;
+     transition: 0.3s ease-in-out;
+ }
+ 
+ /* Placeholder Text */
+ input::placeholder {
+     color: rgba(255, 255, 255, 0.7);
+ }
+ 
+ /* Input Hover & Focus Effects */
+ input:hover, input:focus {
+     border-color: #ffd700;
+     box-shadow: 0 0 12px rgba(255, 215, 0, 0.7);
+ }
+ 
+ /* Button Styling */
+ button {
+     background: linear-gradient(45deg, #ff9900, #ffd700);
+     color: #000;
+     font-size: 18px;
+     font-weight: bold;
+     padding: 14px;
+     border: none;
+     border-radius: 12px;
+     cursor: pointer;
+     width: 100%;
+     transition: all 0.4s ease;
+     box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
+     text-transform: uppercase;
+ }
+ 
+ /* Button Hover Effects */
+ button:hover {
+     background: linear-gradient(45deg, #ffd700, #ff6600);
+     transform: scale(1.05);
+     box-shadow: 0 10px 30px rgba(255, 215, 0, 0.9);
+ }
+ 
+ /* Button Click Effect */
+ button:active {
+     transform: scale(0.95);
+     box-shadow: 0 5px 15px rgba(255, 215, 0, 0.7);
+ }
+ 
+ /* Responsive Design */
+ @media (max-width: 600px) {
+     .container {
+         width: 95%;
+         padding: 20px;
+     }
+ 
+     nav ul {
+         flex-direction: column;
+         gap: 10px;
+     }
+ }
+ 
+ </style>
